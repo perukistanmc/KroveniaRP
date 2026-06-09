@@ -3,14 +3,14 @@ import { motion } from "framer-motion";
 import { FaYoutube, FaDiscord, FaHeart } from "react-icons/fa";
 
 const KROVENIA_LETTERS = [
-  { char: "K", color: "#3B82F6" },
-  { char: "R", color: "#3B82F6" },
-  { char: "O", color: "#3B82F6" },
-  { char: "V", color: "#F59E0B" },
-  { char: "E", color: "#F59E0B" },
-  { char: "N", color: "#3B82F6" },
-  { char: "I", color: "#3B82F6" },
-  { char: "A", color: "#3B82F6" },
+  { char: "K", color: "#3B82F6", shadow: "#1e3a8a" },
+  { char: "R", color: "#3B82F6", shadow: "#1e3a8a" },
+  { char: "O", color: "#3B82F6", shadow: "#1e3a8a" },
+  { char: "V", color: "#F59E0B", shadow: "#78350f" },
+  { char: "E", color: "#F59E0B", shadow: "#78350f" },
+  { char: "N", color: "#3B82F6", shadow: "#1e3a8a" },
+  { char: "I", color: "#3B82F6", shadow: "#1e3a8a" },
+  { char: "A", color: "#3B82F6", shadow: "#1e3a8a" },
 ];
 
 export default function App() {
@@ -28,6 +28,16 @@ export default function App() {
 
   return (
     <div className="min-h-[100dvh] bg-background text-foreground selection:bg-primary/30">
+      {/* SVG filter for Minecraft cracked/roughened text edges */}
+      <svg style={{ position: "absolute", width: 0, height: 0, overflow: "hidden" }} aria-hidden="true">
+        <defs>
+          <filter id="mc-crack" colorInterpolationFilters="sRGB" x="-4%" y="-10%" width="108%" height="120%">
+            <feTurbulence type="fractalNoise" baseFrequency="0.75 0.35" numOctaves="4" seed="7" result="noise" />
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="3" xChannelSelector="R" yChannelSelector="G" result="displaced" />
+            <feComposite in="displaced" in2="SourceGraphic" operator="in" />
+          </filter>
+        </defs>
+      </svg>
       {/* Sticky Header */}
       <nav className="fixed top-0 left-0 right-0 z-50 py-4 px-6 md:px-12 flex justify-end items-center glass-nav">
         <ul className="flex gap-6 md:gap-8 items-center text-sm md:text-base font-medium tracking-wide">
@@ -72,9 +82,19 @@ export default function App() {
             transition={{ duration: 1, ease: "easeOut" }}
             className="animate-float"
           >
-            <h1 className="font-minecraft text-6xl md:text-8xl lg:text-9xl tracking-wider drop-shadow-2xl flex">
+            <h1 className="font-minecraft text-6xl md:text-8xl lg:text-9xl tracking-wider flex">
               {KROVENIA_LETTERS.map((l, i) => (
-                <span key={i} style={{ color: l.color }}>{l.char}</span>
+                <span
+                  key={i}
+                  style={{
+                    color: l.color,
+                    textShadow: `4px 4px 0px ${l.shadow}`,
+                    filter: "url(#mc-crack)",
+                    display: "inline-block",
+                  }}
+                >
+                  {l.char}
+                </span>
               ))}
             </h1>
             <h2 className="font-minecraft text-3xl md:text-5xl lg:text-6xl text-white/90 mt-2 tracking-widest">
