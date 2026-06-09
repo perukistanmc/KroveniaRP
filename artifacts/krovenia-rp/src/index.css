@@ -1,0 +1,148 @@
+@import url('https://fonts.cdnfonts.com/css/minecraft-4');
+@import "tailwindcss";
+@import "tw-animate-css";
+@plugin "@tailwindcss/typography";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+  --color-card-border: hsl(var(--card-border));
+
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-popover-border: hsl(var(--popover-border));
+
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-primary-border: var(--primary-border);
+
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-secondary-border: var(--secondary-border);
+
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-muted-border: var(--muted-border);
+
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-accent-border: var(--accent-border);
+
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-destructive-border: var(--destructive-border);
+
+  --font-sans: var(--app-font-sans);
+  --font-minecraft: var(--app-font-minecraft);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+}
+
+:root, .dark {
+  color-scheme: dark;
+  --background: 0 0% 4%;
+  --foreground: 0 0% 95%;
+  --border: 0 0% 12%;
+  --card: 0 0% 8%;
+  --card-foreground: 0 0% 95%;
+  --card-border: 0 0% 12%;
+  
+  --primary: 142 76% 36%;
+  --primary-foreground: 0 0% 100%;
+  
+  --secondary: 217 91% 60%;
+  --secondary-foreground: 0 0% 100%;
+  
+  --muted: 0 0% 15%;
+  --muted-foreground: 0 0% 65%;
+  
+  --accent: 43 96% 50%;
+  --accent-foreground: 0 0% 9%;
+
+  --destructive: 0 84% 60%;
+  --destructive-foreground: 0 0% 100%;
+  
+  --popover: 0 0% 8%;
+  --popover-foreground: 0 0% 95%;
+  --popover-border: 0 0% 12%;
+  
+  --input: 0 0% 15%;
+  --ring: 142 76% 36%;
+  
+  --radius: 0.75rem;
+  
+  --app-font-sans: 'Inter', sans-serif;
+  --app-font-minecraft: 'Minecraft', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+  background-color: hsl(var(--background));
+}
+
+body {
+  @apply font-sans antialiased bg-background text-foreground;
+  overflow-x: hidden;
+}
+
+.font-minecraft {
+  font-family: 'Minecraft', sans-serif;
+}
+
+.text-gradient-krovenia {
+  background: linear-gradient(180deg, #F59E0B 0%, #F59E0B 35%, #3B82F6 45%, #3B82F6 55%, #F59E0B 65%, #F59E0B 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+  text-shadow: 0px 4px 20px rgba(59, 130, 246, 0.4);
+}
+
+.glass-panel {
+  background: rgba(15, 15, 15, 0.5);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.glass-nav {
+  background: linear-gradient(180deg, rgba(0,0,0,0.8) 0%, rgba(0,0,0,0) 100%);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+}
+
+.btn-glow {
+  box-shadow: 0 0 15px rgba(16, 185, 129, 0.3), inset 0 0 10px rgba(16, 185, 129, 0.1);
+  transition: all 0.3s ease;
+}
+
+.btn-glow:hover {
+  box-shadow: 0 0 25px rgba(16, 185, 129, 0.5), inset 0 0 15px rgba(16, 185, 129, 0.3);
+  transform: translateY(-2px);
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}

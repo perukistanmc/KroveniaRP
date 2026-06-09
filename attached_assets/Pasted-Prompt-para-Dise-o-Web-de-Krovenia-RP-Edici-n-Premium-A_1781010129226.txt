@@ -1,0 +1,51 @@
+Prompt para Diseño Web de "Krovenia RP" (Edición Premium)
+"Actúa como un diseñador de interfaz (UI/UX) experto en sitios web de juegos de alta gama. El objetivo es crear una Landing Page elegante para el servidor de Minecraft 'Krovenia RP'.
+
+1. Estilo Visual y Paleta:
+
+Concepto: Diseño moderno y limpio. Nada de cajas pixeladas básicas. Usa formas fluidas, bordes redondeados y efectos de transparencia (Glassmorphism).
+
+Paleta de colores: Fondo principal oscuro (negro profundo). Acentos en Verde esmeralda, Azul eléctrico y Amarillo brillante.
+
+Jerarquía Tipográfica: El nombre 'Krovenia RP' debe ser el centro de atención. Usa la tipografía de Minecraft solo aquí, con un gradiente de color que combine el Amarillo, Azul y Amarillo (estilo bandera). Para el resto del texto, usa una fuente sans-serif geométrica, moderna y muy legible.
+
+2. Estructura de navegación (Sticky Header):
+
+Arriba a la derecha: Menú de navegación flotante con los enlaces: Inicio, Creadores, Discord.
+
+Funcionalidad: Al hacer clic, la página debe realizar un scroll suave (smooth scroll) hacia la sección correspondiente.
+
+3. Secciones Detalladas:
+
+Sección Inicio (Hero):
+
+Fondo: Usa la imagen https://res.cloudinary.com/dvszdpzax/image/upload/v1781009714/krovenia_bienvenida_ups7mv.png como base (con un filtro oscuro suave para que el texto resalte).
+
+Texto: 'Krovenia' en grande con la tipografía de Minecraft (gradiente amarillo-azul-amarillo), y 'RP' debajo.
+
+Sección Creadores:
+
+Título elegante centrado: 'Creadores del Proyecto'.
+
+Diseño de tarjetas: Marcos circulares con sombra suave (drop-shadow).
+
+Jos3_0 (Admin): Imagen https://res.cloudinary.com/dvszdpzax/image/upload/v1781009714/Loki_jose_nbczxi.jpg con texto 'Admin' debajo.
+
+Tachendo (Owner): Imagen https://res.cloudinary.com/dvszdpzax/image/upload/v1781009714/Mii_Logo_Morado_fyxopr.jpg con texto 'Owner' debajo.
+
+Debajo de Tachendo: Incluye el icono oficial de YouTube y el link: 'Visita el canal de YouTube de Tachendo' (https://www.youtube.com/@tachendo).
+
+Sección Discord:
+
+Un bloque destacado con un botón de diseño 'Premium' (efecto brillo al pasar el ratón) que invite a unirse a la comunidad en: https://discord.gg/njm8JMmWNj."
+
+Por qué este diseño será "bonito" y elegante:
+La tipografía con gradiente: Al aplicar los colores Amarillo, Azul y Amarillo directamente sobre las letras de "Krovenia", creas una identidad de marca fuerte sin necesidad de usar bloques de colores planos.
+
+El fondo hero: Al usar la imagen de bienvenida que me diste como fondo principal de la primera sección, integras el juego en la web de una forma inmersiva y profesional.
+
+Scroll suave: El hecho de que sea una One Page donde el menú simplemente te mueve a la sección de "Creadores" o "Discord" evita que el usuario tenga que cargar nuevas páginas, lo cual es muy común en webs modernas de servidores top.
+
+Menos es más: Al pedir que no se sature con "cuadrados de Minecraft", estamos dejando que las fotos de los creadores y el diseño de la web respiren, lo cual es el secreto de la elegancia.
+
+Consejo extra: Cuando menciones el color verde, úsalo para pequeños detalles como líneas decorativas, iconos o el borde del botón de Discord para que ese color "Minecraft" sea un toque sutil y no algo que sature el diseño.

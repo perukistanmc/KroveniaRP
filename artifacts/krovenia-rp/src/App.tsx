@@ -1,0 +1,226 @@
+import React, { useEffect } from "react";
+import { motion } from "framer-motion";
+import { FaYoutube, FaDiscord } from "react-icons/fa";
+
+export default function App() {
+  useEffect(() => {
+    document.documentElement.classList.add("dark");
+  }, []);
+
+  const smoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
+    e.preventDefault();
+    const element = document.getElementById(id);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
+  return (
+    <div className="min-h-[100dvh] bg-background text-foreground selection:bg-primary/30">
+      {/* Sticky Header */}
+      <nav className="fixed top-0 left-0 right-0 z-50 py-4 px-6 md:px-12 flex justify-end items-center glass-nav">
+        <ul className="flex gap-6 md:gap-8 items-center text-sm md:text-base font-medium tracking-wide">
+          <li>
+            <a href="#inicio" onClick={(e) => smoothScroll(e, "inicio")} className="text-foreground/80 hover:text-white transition-colors duration-200 uppercase tracking-widest">
+              Inicio
+            </a>
+          </li>
+          <li>
+            <a href="#creadores" onClick={(e) => smoothScroll(e, "creadores")} className="text-foreground/80 hover:text-white transition-colors duration-200 uppercase tracking-widest">
+              Creadores
+            </a>
+          </li>
+          <li>
+            <a href="#discord" onClick={(e) => smoothScroll(e, "discord")} className="text-foreground/80 hover:text-white transition-colors duration-200 uppercase tracking-widest">
+              Discord
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      {/* Hero Section */}
+      <section id="inicio" className="relative w-full h-screen flex items-center justify-center overflow-hidden">
+        {/* Background Image with Overlay */}
+        <div 
+          className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
+          style={{ 
+            backgroundImage: `url('https://res.cloudinary.com/dvszdpzax/image/upload/v1781009714/krovenia_bienvenida_ups7mv.png')` 
+          }}
+        />
+        <div className="absolute inset-0 z-0 bg-black/60 bg-gradient-to-b from-transparent to-background/90" />
+
+        <div className="relative z-10 text-center px-4 flex flex-col items-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, ease: "easeOut" }}
+            className="animate-float"
+          >
+            <h1 className="font-minecraft text-6xl md:text-8xl lg:text-9xl tracking-wider text-gradient-krovenia drop-shadow-2xl">
+              KROVENIA
+            </h1>
+            <h2 className="font-minecraft text-3xl md:text-5xl lg:text-6xl text-white/90 mt-2 tracking-widest">
+              RP
+            </h2>
+          </motion.div>
+          
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.8, duration: 1 }}
+            className="mt-8"
+          >
+            <p className="text-lg md:text-xl text-gray-300 font-light max-w-2xl mx-auto">
+              Sumérgete en una experiencia de rol épica. El destino de este mundo está en tus manos.
+            </p>
+          </motion.div>
+          
+          <motion.div
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 1.2, duration: 0.5 }}
+            className="mt-12"
+          >
+            <a 
+              href="#creadores" 
+              onClick={(e) => smoothScroll(e, "creadores")}
+              className="inline-flex items-center justify-center w-12 h-12 rounded-full border border-white/20 bg-white/5 hover:bg-white/10 transition-all text-white/70 hover:text-white"
+            >
+              <svg className="w-5 h-5 animate-bounce" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 14l-7 7m0 0l-7-7m7 7V3" />
+              </svg>
+            </a>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Creators Section */}
+      <section id="creadores" className="py-32 px-6 relative z-10 bg-background">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/5 via-background to-background opacity-50 pointer-events-none" />
+        
+        <div className="max-w-5xl mx-auto relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-20"
+          >
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white mb-4">
+              Creadores del Proyecto
+            </h2>
+            <div className="h-1 w-20 bg-primary mx-auto rounded-full shadow-[0_0_10px_rgba(16,185,129,0.5)]" />
+          </motion.div>
+
+          <div className="grid md:grid-cols-2 gap-10 lg:gap-16">
+            {/* Jos3_0 Card */}
+            <motion.div
+              initial={{ opacity: 0, x: -30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="glass-panel rounded-3xl p-8 md:p-10 flex flex-col items-center text-center group hover:border-primary/30 transition-colors duration-500 relative overflow-hidden"
+            >
+              <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl -mr-10 -mt-10 transition-opacity group-hover:opacity-100 opacity-50" />
+              
+              <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-2 border-white/10 group-hover:border-primary/50 transition-all duration-500 mb-6 shadow-2xl relative">
+                <img 
+                  src="https://res.cloudinary.com/dvszdpzax/image/upload/v1781009714/Loki_jose_nbczxi.jpg" 
+                  alt="Jos3_0" 
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                />
+              </div>
+              <h3 className="text-2xl font-bold text-white mb-2 tracking-wide font-minecraft">Jos3_0</h3>
+              <p className="text-primary font-medium tracking-widest uppercase text-sm mb-6">Admin</p>
+              <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
+                Arquitecto de sistemas y administrador principal. Velando por el balance y la estabilidad del universo Krovenia.
+              </p>
+            </motion.div>
+
+            {/* Tachendo Card */}
+            <motion.div
+              initial={{ opacity: 0, x: 30 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.4 }}
+              className="glass-panel rounded-3xl p-8 md:p-10 flex flex-col items-center text-center group hover:border-primary/30 transition-colors duration-500 relative overflow-hidden"
+            >
+              <div className="absolute top-0 left-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl -ml-10 -mt-10 transition-opacity group-hover:opacity-100 opacity-50" />
+              
+              <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-2 border-white/10 group-hover:border-primary/50 transition-all duration-500 mb-6 shadow-2xl relative">
+                <img 
+                  src="https://res.cloudinary.com/dvszdpzax/image/upload/v1781009714/Mii_Logo_Morado_fyxopr.jpg" 
+                  alt="Tachendo" 
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                />
+              </div>
+              <h3 className="text-2xl font-bold text-white mb-2 tracking-wide font-minecraft">Tachendo</h3>
+              <p className="text-primary font-medium tracking-widest uppercase text-sm mb-6">Owner</p>
+              <p className="text-gray-400 text-sm leading-relaxed max-w-xs mb-8">
+                Fundador visionario. El creador de la historia, diseñando cada rincón de este vasto mundo de fantasía.
+              </p>
+              
+              <a 
+                href="https://www.youtube.com/@tachendo" 
+                target="_blank" 
+                rel="noreferrer"
+                className="flex items-center gap-3 mt-auto pt-4 border-t border-white/10 w-full justify-center group/yt"
+              >
+                <FaYoutube className="text-red-600 text-2xl group-hover/yt:scale-110 transition-transform" />
+                <span className="text-sm font-medium text-gray-300 group-hover/yt:text-white transition-colors">
+                  Visita el canal de Tachendo
+                </span>
+              </a>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Discord Section */}
+      <section id="discord" className="py-32 px-6 relative overflow-hidden flex items-center justify-center min-h-[80vh]">
+        {/* Abstract background elements */}
+        <div className="absolute inset-0 bg-background" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[800px] bg-blue-600/5 rounded-full blur-[120px] pointer-events-none" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[400px] h-[400px] bg-primary/10 rounded-full blur-[80px] pointer-events-none" />
+        
+        <motion.div
+          initial={{ opacity: 0, scale: 0.95 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="relative z-10 glass-panel border border-primary/30 rounded-3xl p-10 md:p-16 max-w-3xl w-full text-center shadow-[0_0_50px_rgba(16,185,129,0.1)]"
+        >
+          <div className="absolute -top-12 left-1/2 -translate-x-1/2 bg-background p-4 rounded-full border border-primary/30 shadow-[0_0_20px_rgba(16,185,129,0.2)]">
+            <FaDiscord className="text-5xl text-[#5865F2]" />
+          </div>
+          
+          <h2 className="text-3xl md:text-5xl font-bold text-white mt-8 mb-6 tracking-tight">
+            La aventura te espera
+          </h2>
+          
+          <p className="text-gray-400 text-lg md:text-xl mb-10 max-w-xl mx-auto font-light leading-relaxed">
+            Únete a nuestra comunidad. Conoce a otros jugadores, mantente al tanto de las actualizaciones y comienza tu historia en Krovenia.
+          </p>
+          
+          <a
+            href="https://discord.gg/njm8JMmWNj"
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-3 bg-black/50 border border-primary text-white px-8 py-4 rounded-full font-medium tracking-wide btn-glow relative overflow-hidden group"
+          >
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:animate-[shimmer_2s_infinite]" />
+            <FaDiscord className="text-xl" />
+            <span>Únete al Discord</span>
+          </a>
+        </motion.div>
+      </section>
+
+      {/* Footer */}
+      <footer className="py-8 text-center border-t border-white/5 bg-black">
+        <p className="text-gray-600 text-sm font-light">
+          &copy; {new Date().getFullYear()} Krovenia RP. Todos los derechos reservados.
+        </p>
+      </footer>
+    </div>
+  );
+}
