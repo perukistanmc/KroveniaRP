@@ -1,16 +1,16 @@
 import React, { useEffect } from "react";
 import { motion } from "framer-motion";
-import { FaYoutube, FaDiscord, FaHeart } from "react-icons/fa";
+import { FaYoutube, FaDiscord, FaHeart, FaTiktok } from "react-icons/fa";
 
 const KROVENIA_LETTERS = [
-  { char: "K", color: "#3B82F6", shadow: "#1e3a8a" },
-  { char: "R", color: "#3B82F6", shadow: "#1e3a8a" },
-  { char: "O", color: "#3B82F6", shadow: "#1e3a8a" },
-  { char: "V", color: "#F59E0B", shadow: "#78350f" },
-  { char: "E", color: "#F59E0B", shadow: "#78350f" },
-  { char: "N", color: "#3B82F6", shadow: "#1e3a8a" },
-  { char: "I", color: "#3B82F6", shadow: "#1e3a8a" },
-  { char: "A", color: "#3B82F6", shadow: "#1e3a8a" },
+  { char: "K", color: "#ffffff", shadow: "#555555" },
+  { char: "R", color: "#ffffff", shadow: "#555555" },
+  { char: "O", color: "#ffffff", shadow: "#555555" },
+  { char: "V", color: "#ffffff", shadow: "#555555" },
+  { char: "E", color: "#ffffff", shadow: "#555555" },
+  { char: "N", color: "#ffffff", shadow: "#555555" },
+  { char: "I", color: "#ffffff", shadow: "#555555" },
+  { char: "A", color: "#ffffff", shadow: "#555555" },
 ];
 
 export default function App() {
@@ -59,6 +59,11 @@ export default function App() {
           <li>
             <a href="#discord" onClick={(e) => smoothScroll(e, "discord")} className="text-foreground/80 hover:text-white transition-colors duration-200 uppercase tracking-widest">
               Discord
+            </a>
+          </li>
+          <li>
+            <a href="#redes" onClick={(e) => smoothScroll(e, "redes")} className="text-foreground/80 hover:text-white transition-colors duration-200 uppercase tracking-widest">
+              Redes
             </a>
           </li>
         </ul>
@@ -302,6 +307,69 @@ export default function App() {
             <FaDiscord className="text-xl" />
             <span>Únete al Discord</span>
           </a>
+        </motion.div>
+      </section>
+
+      {/* Social Media Section */}
+      <section id="redes" className="py-32 px-6 relative overflow-hidden flex items-center justify-center">
+        <div className="absolute inset-0 bg-background" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-white/3 rounded-full blur-[100px] pointer-events-none" />
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="relative z-10 max-w-3xl w-full text-center"
+        >
+          <div className="mb-12">
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 tracking-tight">
+              Síguenos
+            </h2>
+            <div className="h-1 w-20 bg-white/30 mx-auto rounded-full" />
+          </div>
+
+          <div className="grid sm:grid-cols-2 gap-6">
+            {/* TikTok */}
+            <motion.a
+              href="https://www.tiktok.com/@kroveniarp?_r=1&_t=ZN-974GAI2v7Dy"
+              target="_blank"
+              rel="noreferrer"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="glass-panel border border-white/10 rounded-2xl p-8 flex flex-col items-center gap-4 group hover:border-white/30 hover:-translate-y-1 transition-all duration-300"
+            >
+              <div className="bg-white/5 border border-white/10 rounded-full p-4 group-hover:bg-white/10 transition-colors duration-300">
+                <FaTiktok className="text-3xl text-white" />
+              </div>
+              <div>
+                <p className="text-white font-semibold text-lg tracking-wide">TikTok</p>
+                <p className="text-gray-500 text-sm mt-1">@kroveniarp</p>
+              </div>
+            </motion.a>
+
+            {/* YouTube */}
+            <motion.a
+              href="https://www.youtube.com/@KroveniaRP"
+              target="_blank"
+              rel="noreferrer"
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="glass-panel border border-white/10 rounded-2xl p-8 flex flex-col items-center gap-4 group hover:border-red-500/40 hover:-translate-y-1 transition-all duration-300"
+            >
+              <div className="bg-white/5 border border-white/10 rounded-full p-4 group-hover:bg-red-500/10 transition-colors duration-300">
+                <FaYoutube className="text-3xl text-red-500" />
+              </div>
+              <div>
+                <p className="text-white font-semibold text-lg tracking-wide">YouTube</p>
+                <p className="text-gray-500 text-sm mt-1">@KroveniaRP</p>
+              </div>
+            </motion.a>
+          </div>
         </motion.div>
       </section>
 
