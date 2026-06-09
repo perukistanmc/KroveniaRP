@@ -1,6 +1,17 @@
 import React, { useEffect } from "react";
 import { motion } from "framer-motion";
-import { FaYoutube, FaDiscord } from "react-icons/fa";
+import { FaYoutube, FaDiscord, FaHeart } from "react-icons/fa";
+
+const KROVENIA_LETTERS = [
+  { char: "K", color: "#3B82F6" },
+  { char: "R", color: "#3B82F6" },
+  { char: "O", color: "#3B82F6" },
+  { char: "V", color: "#F59E0B" },
+  { char: "E", color: "#F59E0B" },
+  { char: "N", color: "#3B82F6" },
+  { char: "I", color: "#3B82F6" },
+  { char: "A", color: "#3B82F6" },
+];
 
 export default function App() {
   useEffect(() => {
@@ -31,6 +42,11 @@ export default function App() {
             </a>
           </li>
           <li>
+            <a href="#donaciones" onClick={(e) => smoothScroll(e, "donaciones")} className="text-foreground/80 hover:text-white transition-colors duration-200 uppercase tracking-widest">
+              Donaciones
+            </a>
+          </li>
+          <li>
             <a href="#discord" onClick={(e) => smoothScroll(e, "discord")} className="text-foreground/80 hover:text-white transition-colors duration-200 uppercase tracking-widest">
               Discord
             </a>
@@ -56,8 +72,10 @@ export default function App() {
             transition={{ duration: 1, ease: "easeOut" }}
             className="animate-float"
           >
-            <h1 className="font-minecraft text-6xl md:text-8xl lg:text-9xl tracking-wider text-gradient-krovenia drop-shadow-2xl">
-              KROVENIA
+            <h1 className="font-minecraft text-6xl md:text-8xl lg:text-9xl tracking-wider drop-shadow-2xl flex">
+              {KROVENIA_LETTERS.map((l, i) => (
+                <span key={i} style={{ color: l.color }}>{l.char}</span>
+              ))}
             </h1>
             <h2 className="font-minecraft text-3xl md:text-5xl lg:text-6xl text-white/90 mt-2 tracking-widest">
               RP
@@ -174,6 +192,58 @@ export default function App() {
             </motion.div>
           </div>
         </div>
+      </section>
+
+      {/* Donations Section */}
+      <section id="donaciones" className="py-32 px-6 relative overflow-hidden flex items-center justify-center">
+        <div className="absolute inset-0 bg-background" />
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-yellow-500/5 rounded-full blur-[100px] pointer-events-none" />
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          className="relative z-10 max-w-3xl w-full text-center"
+        >
+          <div className="mb-10">
+            <h2 className="text-3xl md:text-5xl font-bold text-white mb-4 tracking-tight">
+              Apoya el Servidor
+            </h2>
+            <div className="h-1 w-20 bg-yellow-500 mx-auto rounded-full shadow-[0_0_10px_rgba(245,158,11,0.5)]" />
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.95 }}
+            whileInView={{ opacity: 1, scale: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="glass-panel border border-yellow-500/20 rounded-3xl p-10 md:p-14 shadow-[0_0_50px_rgba(245,158,11,0.07)]"
+          >
+            <div className="flex items-center justify-center mb-8">
+              <div className="bg-yellow-500/10 border border-yellow-500/30 rounded-full p-5 shadow-[0_0_20px_rgba(245,158,11,0.2)]">
+                <FaHeart className="text-4xl text-yellow-400" />
+              </div>
+            </div>
+
+            <p className="text-gray-300 text-lg md:text-xl mb-3 font-light leading-relaxed max-w-xl mx-auto">
+              Cada donación ayuda a mantener vivo el mundo de Krovenia.
+            </p>
+            <p className="text-gray-500 text-base mb-10 max-w-md mx-auto">
+              Tu apoyo nos permite mejorar el servidor, agregar nuevo contenido y seguir creciendo juntos.
+            </p>
+
+            <a
+              href="https://www.papayoux.com/es/cagnotte/perukistanmc"
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-3 border border-yellow-500/60 text-yellow-300 bg-yellow-500/10 px-8 py-4 rounded-full font-medium tracking-wide transition-all duration-300 hover:bg-yellow-500/20 hover:border-yellow-400 hover:text-yellow-200 hover:shadow-[0_0_25px_rgba(245,158,11,0.35)] hover:-translate-y-1 group"
+            >
+              <FaHeart className="text-lg group-hover:scale-110 transition-transform" />
+              <span>Donar en PapaYoux</span>
+            </a>
+          </motion.div>
+        </motion.div>
       </section>
 
       {/* Discord Section */}
