@@ -192,7 +192,7 @@ export default function App() {
               
               <div className="w-32 h-32 md:w-40 md:h-40 rounded-full overflow-hidden border-2 border-white/10 group-hover:border-primary/50 transition-all duration-500 mb-6 shadow-2xl relative">
                 <img 
-                  src="https://res.cloudinary.com/dvszdpzax/image/upload/v1781009714/Mii_Logo_Morado_fyxopr.jpg" 
+                  src="https://res.cloudinary.com/dvszdpzax/image/upload/v1781099770/Mii_Logo_Morado_jum2ol.jpg" 
                   alt="Tachendo" 
                   className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                 />
