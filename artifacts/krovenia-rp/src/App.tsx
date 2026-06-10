@@ -83,11 +83,11 @@ export default function App() {
                 <span
                   key={i}
                   style={{
-                    background: "repeating-linear-gradient(180deg, #8A8A8A 0px, #8A8A8A 3px, #6A6A6A 3px, #6A6A6A 6px)",
+                    background: "repeating-linear-gradient(180deg, #C0C0C0 0px, #C0C0C0 1px, #8A8A8A 1px, #8A8A8A 14px, #4A4A4A 14px, #4A4A4A 16px)",
                     WebkitBackgroundClip: "text",
                     WebkitTextFillColor: "transparent",
                     backgroundClip: "text",
-                    filter: "url(#mc-crack) drop-shadow(4px 4px 0px #2a2a2a)",
+                    filter: "url(#mc-crack) drop-shadow(5px 5px 0px #1a1a1a)",
                     display: "inline-block",
                   }}
                 >
