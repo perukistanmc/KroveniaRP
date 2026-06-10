@@ -93,8 +93,9 @@ export default function App() {
                 </span>
               ))}
             </h1>
-            <h2 className="font-minecraft text-3xl md:text-5xl lg:text-6xl text-white/90 mt-2 tracking-widest" style={{ textShadow: "3px 3px 0px #000000" }}>
-              RP
+            <h2 className="font-minecraft text-3xl md:text-5xl lg:text-6xl mt-2 tracking-widest flex justify-center">
+              <span style={{ color: "#1e3a8a", textShadow: "3px 3px 0px #000000" }}>R</span>
+              <span style={{ color: "#F59E0B", textShadow: "3px 3px 0px #000000" }}>P</span>
             </h2>
           </motion.div>
           
