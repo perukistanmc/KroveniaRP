@@ -243,7 +243,7 @@ export default function App() {
             </div>
 
             <p className="text-gray-300 text-lg md:text-xl mb-3 font-light leading-relaxed max-w-xl mx-auto">
-              Cada donación ayuda a mantener vivo el mundo de Krovenia.
+              Cada donación ayuda a mantener viva la nación de Krovenia.
             </p>
             <p className="text-gray-500 text-base mb-10 max-w-md mx-auto">
               Tu apoyo nos permite mejorar el servidor, agregar nuevo contenido y seguir creciendo juntos.
