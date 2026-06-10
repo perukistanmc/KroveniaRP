@@ -105,7 +105,7 @@ export default function App() {
             className="mt-8"
           >
             <p className="text-lg md:text-xl text-gray-300 font-light max-w-2xl mx-auto">
-              Sumérgete en una experiencia de rol épica. El destino de este mundo está en tus manos.
+              Sumérgete en una experiencia de rol épica. El destino de este país está en tus manos.
             </p>
           </motion.div>
           
