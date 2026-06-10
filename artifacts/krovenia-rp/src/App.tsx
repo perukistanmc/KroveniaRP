@@ -85,7 +85,6 @@ export default function App() {
                   style={{
                     color: "#ffffff",
                     textShadow: "4px 4px 0px #000000",
-                    filter: "url(#mc-crack)",
                     display: "inline-block",
                   }}
                 >
