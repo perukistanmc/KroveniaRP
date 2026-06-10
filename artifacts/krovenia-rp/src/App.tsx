@@ -176,7 +176,7 @@ export default function App() {
               <h3 className="text-2xl font-bold text-white mb-2 tracking-wide font-minecraft">Jos3_0</h3>
               <p className="text-primary font-medium tracking-widest uppercase text-sm mb-6">Admin</p>
               <p className="text-gray-400 text-sm leading-relaxed max-w-xs">
-                Arquitecto de sistemas y administrador principal. Velando por el balance y la estabilidad del universo Krovenia.
+                Responsable de la gestión técnica y diseñador de la página web.
               </p>
             </motion.div>
 
@@ -200,7 +200,7 @@ export default function App() {
               <h3 className="text-2xl font-bold text-white mb-2 tracking-wide font-minecraft">Tachendo</h3>
               <p className="text-primary font-medium tracking-widest uppercase text-sm mb-6">Owner</p>
               <p className="text-gray-400 text-sm leading-relaxed max-w-xs mb-8">
-                Fundador visionario. El creador de la historia, diseñando cada rincón de este vasto mundo de fantasía.
+                Responsable de la creación y mantenimiento del proyecto.
               </p>
               
               <a 
