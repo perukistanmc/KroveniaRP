@@ -83,8 +83,8 @@ export default function App() {
                 <span
                   key={i}
                   style={{
-                    color: "#8A8A8A",
-                    textShadow: "4px 4px 0px #3a3a3a",
+                    color: "#ffffff",
+                    textShadow: "4px 4px 0px #555555",
                     filter: "url(#mc-crack)",
                     display: "inline-block",
                   }}
