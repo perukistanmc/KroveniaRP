@@ -2,16 +2,7 @@ import React, { useEffect } from "react";
 import { motion } from "framer-motion";
 import { FaYoutube, FaDiscord, FaHeart, FaTiktok } from "react-icons/fa";
 
-const KROVENIA_LETTERS = [
-  { char: "K", color: "#ffffff", shadow: "#555555" },
-  { char: "R", color: "#ffffff", shadow: "#555555" },
-  { char: "O", color: "#ffffff", shadow: "#555555" },
-  { char: "V", color: "#ffffff", shadow: "#555555" },
-  { char: "E", color: "#ffffff", shadow: "#555555" },
-  { char: "N", color: "#ffffff", shadow: "#555555" },
-  { char: "I", color: "#ffffff", shadow: "#555555" },
-  { char: "A", color: "#ffffff", shadow: "#555555" },
-];
+const KROVENIA_LETTERS = ["K","R","O","V","E","N","I","A"];
 
 export default function App() {
   useEffect(() => {
@@ -88,17 +79,19 @@ export default function App() {
             className="animate-float"
           >
             <h1 className="font-minecraft text-6xl md:text-8xl lg:text-9xl tracking-wider flex">
-              {KROVENIA_LETTERS.map((l, i) => (
+              {KROVENIA_LETTERS.map((char, i) => (
                 <span
                   key={i}
                   style={{
-                    color: l.color,
-                    textShadow: `4px 4px 0px ${l.shadow}`,
-                    filter: "url(#mc-crack)",
+                    background: "repeating-linear-gradient(180deg, #8A8A8A 0px, #8A8A8A 3px, #6A6A6A 3px, #6A6A6A 6px)",
+                    WebkitBackgroundClip: "text",
+                    WebkitTextFillColor: "transparent",
+                    backgroundClip: "text",
+                    filter: "url(#mc-crack) drop-shadow(4px 4px 0px #2a2a2a)",
                     display: "inline-block",
                   }}
                 >
-                  {l.char}
+                  {char}
                 </span>
               ))}
             </h1>
