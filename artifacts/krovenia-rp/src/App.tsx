@@ -475,15 +475,15 @@ export default function App() {
               if (Math.abs(diff) > 50) diff > 0 ? nextImage() : prevImage();
             }}
           >
-            <AnimatePresence mode="wait">
+            <AnimatePresence mode="sync">
               <motion.img
                 key={lightboxIndex}
                 src={SPAWN_IMAGES[lightboxIndex]}
-                initial={{ opacity: 0, x: 40 }}
-                animate={{ opacity: 1, x: 0 }}
-                exit={{ opacity: 0, x: -40 }}
-                transition={{ duration: 0.2 }}
-                className="max-w-full max-h-full object-contain rounded-xl shadow-2xl"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.15 }}
+                className="absolute max-w-full max-h-full object-contain rounded-xl shadow-2xl"
                 onClick={(e) => e.stopPropagation()}
               />
             </AnimatePresence>
