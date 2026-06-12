@@ -4,20 +4,37 @@ import { FaYoutube, FaDiscord, FaHeart, FaTiktok } from "react-icons/fa";
 
 const KROVENIA_LETTERS = ["K","R","O","V","E","N","I","A"];
 
+const SPAWN_IMAGES = [
+  "https://res.cloudinary.com/dvszdpzax/image/upload/v1781290974/Imagen_1_y43nqx.png",
+  "https://res.cloudinary.com/dvszdpzax/image/upload/v1781290974/Imagen_4_jhey4c.png",
+  "https://res.cloudinary.com/dvszdpzax/image/upload/v1781290974/Imagen_3_nrmrpd.png",
+  "https://res.cloudinary.com/dvszdpzax/image/upload/v1781290974/Imagen_5_uzspo8.png",
+  "https://res.cloudinary.com/dvszdpzax/image/upload/v1781290974/2_Imagen_beql9w.png",
+  "https://res.cloudinary.com/dvszdpzax/image/upload/v1781290973/Imagen_6_k2wkvp.png",
+  "https://res.cloudinary.com/dvszdpzax/image/upload/v1781290973/Imagen_7_piyskl.png",
+];
+
 export default function App() {
-  const [lightbox, setLightbox] = useState<string | null>(null);
+  const [lightboxIndex, setLightboxIndex] = useState<number | null>(null);
 
   useEffect(() => {
     document.documentElement.classList.add("dark");
   }, []);
 
-  const closeLightbox = useCallback(() => setLightbox(null), []);
+  const closeLightbox = useCallback(() => setLightboxIndex(null), []);
+  const prevImage = useCallback(() => setLightboxIndex(i => i !== null ? (i - 1 + SPAWN_IMAGES.length) % SPAWN_IMAGES.length : null), []);
+  const nextImage = useCallback(() => setLightboxIndex(i => i !== null ? (i + 1) % SPAWN_IMAGES.length : null), []);
 
   useEffect(() => {
-    const onKey = (e: KeyboardEvent) => { if (e.key === "Escape") closeLightbox(); };
+    if (lightboxIndex === null) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") closeLightbox();
+      else if (e.key === "ArrowLeft") prevImage();
+      else if (e.key === "ArrowRight") nextImage();
+    };
     window.addEventListener("keydown", onKey);
     return () => window.removeEventListener("keydown", onKey);
-  }, [closeLightbox]);
+  }, [lightboxIndex, closeLightbox, prevImage, nextImage]);
 
   const smoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
@@ -256,15 +273,7 @@ export default function App() {
             </div>
 
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
-              {[
-                "https://res.cloudinary.com/dvszdpzax/image/upload/v1781290974/Imagen_1_y43nqx.png",
-                "https://res.cloudinary.com/dvszdpzax/image/upload/v1781290974/Imagen_4_jhey4c.png",
-                "https://res.cloudinary.com/dvszdpzax/image/upload/v1781290974/Imagen_3_nrmrpd.png",
-                "https://res.cloudinary.com/dvszdpzax/image/upload/v1781290974/Imagen_5_uzspo8.png",
-                "https://res.cloudinary.com/dvszdpzax/image/upload/v1781290974/2_Imagen_beql9w.png",
-                "https://res.cloudinary.com/dvszdpzax/image/upload/v1781290973/Imagen_6_k2wkvp.png",
-                "https://res.cloudinary.com/dvszdpzax/image/upload/v1781290973/Imagen_7_piyskl.png",
-              ].map((src, i) => (
+              {SPAWN_IMAGES.map((src, i) => (
                 <motion.div
                   key={i}
                   initial={{ opacity: 0, scale: 0.95 }}
@@ -272,7 +281,7 @@ export default function App() {
                   viewport={{ once: true }}
                   transition={{ duration: 0.4, delay: i * 0.07 }}
                   className="group relative aspect-video overflow-hidden rounded-xl border border-white/5 hover:border-primary/30 transition-all duration-300 cursor-zoom-in"
-                  onClick={() => setLightbox(src)}
+                  onClick={() => setLightboxIndex(i)}
                 >
                   <img
                     src={src}
@@ -448,30 +457,56 @@ export default function App() {
 
       {/* Lightbox */}
       <AnimatePresence>
-        {lightbox && (
+        {lightboxIndex !== null && (
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.2 }}
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/90 p-4 md:p-8"
+            className="fixed inset-0 z-[100] flex items-center justify-center bg-black/92 p-4 md:p-10"
             onClick={closeLightbox}
+            onTouchStart={(e) => {
+              const x = e.touches[0].clientX;
+              (e.currentTarget as HTMLDivElement).dataset.touchX = String(x);
+            }}
+            onTouchEnd={(e) => {
+              const startX = Number((e.currentTarget as HTMLDivElement).dataset.touchX ?? 0);
+              const diff = startX - e.changedTouches[0].clientX;
+              if (Math.abs(diff) > 50) diff > 0 ? nextImage() : prevImage();
+            }}
           >
-            <motion.img
-              src={lightbox}
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.9, opacity: 0 }}
-              transition={{ duration: 0.25 }}
-              className="max-w-full max-h-full object-contain rounded-xl shadow-2xl"
-              onClick={(e) => e.stopPropagation()}
-            />
-            <button
-              onClick={closeLightbox}
-              className="absolute top-4 right-4 bg-white/10 hover:bg-white/20 border border-white/20 rounded-full w-10 h-10 flex items-center justify-center text-white transition-colors"
-            >
+            <AnimatePresence mode="wait">
+              <motion.img
+                key={lightboxIndex}
+                src={SPAWN_IMAGES[lightboxIndex]}
+                initial={{ opacity: 0, x: 40 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -40 }}
+                transition={{ duration: 0.2 }}
+                className="max-w-full max-h-full object-contain rounded-xl shadow-2xl"
+                onClick={(e) => e.stopPropagation()}
+              />
+            </AnimatePresence>
+
+            {/* Close */}
+            <button onClick={closeLightbox} className="absolute top-4 right-4 bg-white/10 hover:bg-white/20 border border-white/20 rounded-full w-10 h-10 flex items-center justify-center text-white transition-colors z-10">
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" /></svg>
             </button>
+
+            {/* Prev */}
+            <button onClick={(e) => { e.stopPropagation(); prevImage(); }} className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/25 border border-white/20 rounded-full w-11 h-11 flex items-center justify-center text-white transition-colors z-10">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" /></svg>
+            </button>
+
+            {/* Next */}
+            <button onClick={(e) => { e.stopPropagation(); nextImage(); }} className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/25 border border-white/20 rounded-full w-11 h-11 flex items-center justify-center text-white transition-colors z-10">
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" /></svg>
+            </button>
+
+            {/* Counter */}
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/60 border border-white/10 rounded-full px-4 py-1 text-white/70 text-sm">
+              {lightboxIndex + 1} / {SPAWN_IMAGES.length}
+            </div>
           </motion.div>
         )}
       </AnimatePresence>
