@@ -43,6 +43,11 @@ export default function App() {
             </a>
           </li>
           <li>
+            <a href="#galeria" onClick={(e) => smoothScroll(e, "galeria")} className="text-foreground/80 hover:text-white transition-colors duration-200 uppercase tracking-widest">
+              Galería
+            </a>
+          </li>
+          <li>
             <a href="#donaciones" onClick={(e) => smoothScroll(e, "donaciones")} className="text-foreground/80 hover:text-white transition-colors duration-200 uppercase tracking-widest">
               Donaciones
             </a>
@@ -207,6 +212,67 @@ export default function App() {
               </a>
             </motion.div>
           </div>
+        </div>
+      </section>
+
+      {/* Gallery Section */}
+      <section id="galeria" className="py-32 px-6 relative z-10 bg-background">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-white/3 via-background to-background opacity-40 pointer-events-none" />
+
+        <div className="max-w-6xl mx-auto relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white mb-4">
+              Galería
+            </h2>
+            <div className="h-1 w-20 bg-primary mx-auto rounded-full shadow-[0_0_10px_rgba(16,185,129,0.5)]" />
+          </motion.div>
+
+          {/* Spawn subsection */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
+            <div className="flex items-center gap-4 mb-8">
+              <h3 className="text-xl md:text-2xl font-semibold text-white tracking-wide font-minecraft">Spawn</h3>
+              <div className="flex-1 h-px bg-white/10" />
+            </div>
+
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4">
+              {[
+                "https://res.cloudinary.com/dvszdpzax/image/upload/v1781290974/Imagen_1_y43nqx.png",
+                "https://res.cloudinary.com/dvszdpzax/image/upload/v1781290974/Imagen_4_jhey4c.png",
+                "https://res.cloudinary.com/dvszdpzax/image/upload/v1781290974/Imagen_3_nrmrpd.png",
+                "https://res.cloudinary.com/dvszdpzax/image/upload/v1781290974/Imagen_5_uzspo8.png",
+                "https://res.cloudinary.com/dvszdpzax/image/upload/v1781290974/2_Imagen_beql9w.png",
+                "https://res.cloudinary.com/dvszdpzax/image/upload/v1781290973/Imagen_6_k2wkvp.png",
+                "https://res.cloudinary.com/dvszdpzax/image/upload/v1781290973/Imagen_7_piyskl.png",
+              ].map((src, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.4, delay: i * 0.07 }}
+                  className="group relative aspect-video overflow-hidden rounded-xl border border-white/5 hover:border-primary/30 transition-all duration-300 cursor-pointer"
+                >
+                  <img
+                    src={src}
+                    alt={`Spawn ${i + 1}`}
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
+                  />
+                  <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-colors duration-300" />
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
         </div>
       </section>
 
