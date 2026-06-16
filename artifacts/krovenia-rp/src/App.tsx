@@ -322,6 +322,18 @@ export default function App() {
             </h2>
             <div className="h-1 w-20 bg-primary mx-auto rounded-full shadow-[0_0_10px_rgba(16,185,129,0.5)]" />
           </motion.div>
+
+          <div style={{ width: '100%', maxWidth: '1200px', margin: '0 auto', padding: '20px' }}>
+            <iframe
+              src="http://kroveniarp.ggwp.cc:17277/?worldname=world&mapname=flat&zoom=1&x=2748&y=64&z=2176"
+              title="Mapa Interactivo Krovenia RP"
+              width="100%"
+              height="650px"
+              style={{ border: 'none', borderRadius: '12px', boxShadow: '0 8px 24px rgba(0,0,0,0.3)' }}
+              allowFullScreen
+              loading="lazy"
+            />
+          </div>
         </div>
       </section>
 
