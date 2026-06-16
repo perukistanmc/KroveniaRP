@@ -75,11 +75,6 @@ export default function App() {
             </a>
           </li>
           <li>
-            <a href="#mapa" onClick={(e) => smoothScroll(e, "mapa")} className="text-foreground/80 hover:text-white transition-colors duration-200 uppercase tracking-widest">
-              Mapa
-            </a>
-          </li>
-          <li>
             <a href="#donaciones" onClick={(e) => smoothScroll(e, "donaciones")} className="text-foreground/80 hover:text-white transition-colors duration-200 uppercase tracking-widest">
               Donaciones
             </a>
@@ -301,110 +296,6 @@ export default function App() {
                   </div>
                 </motion.div>
               ))}
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Map Section */}
-      <section id="mapa" className="py-32 px-6 relative z-10 bg-background">
-        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/5 via-background to-background opacity-50 pointer-events-none" />
-
-        <div className="max-w-6xl mx-auto relative z-10">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.8 }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white mb-4">
-              Mapa
-            </h2>
-            <div className="h-1 w-20 bg-primary mx-auto rounded-full shadow-[0_0_10px_rgba(16,185,129,0.5)]" />
-            <p className="text-gray-400 mt-6 text-base md:text-lg max-w-xl mx-auto">
-              Explora el mundo de Krovenia. Descubre territorios, ciudades y puntos de interés.
-            </p>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl"
-            style={{ background: "rgba(255,255,255,0.03)", backdropFilter: "blur(12px)" }}
-          >
-            {/* Map grid background */}
-            <div className="relative w-full aspect-[16/9] overflow-hidden">
-              {/* Terrain base */}
-              <div className="absolute inset-0" style={{
-                background: "linear-gradient(135deg, #1a2f1a 0%, #0d1f0d 20%, #1f3a1f 35%, #0a1a0a 50%, #162616 65%, #0d2010 80%, #1a2f1a 100%)"
-              }} />
-
-              {/* Pixel grid overlay */}
-              <div className="absolute inset-0 opacity-10" style={{
-                backgroundImage: "linear-gradient(rgba(255,255,255,0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.15) 1px, transparent 1px)",
-                backgroundSize: "32px 32px"
-              }} />
-
-              {/* Terrain patches */}
-              <div className="absolute inset-0">
-                <div className="absolute rounded-full opacity-30" style={{ width: "45%", height: "55%", top: "10%", left: "5%", background: "radial-gradient(ellipse, #2d5a2d 0%, transparent 70%)" }} />
-                <div className="absolute rounded-full opacity-25" style={{ width: "35%", height: "40%", top: "30%", left: "45%", background: "radial-gradient(ellipse, #1e4a3e 0%, transparent 70%)" }} />
-                <div className="absolute rounded-full opacity-20" style={{ width: "25%", height: "30%", top: "5%", left: "65%", background: "radial-gradient(ellipse, #3a5f20 0%, transparent 70%)" }} />
-                {/* River */}
-                <div className="absolute opacity-40" style={{ width: "70%", height: "8px", top: "55%", left: "15%", background: "linear-gradient(90deg, transparent, #1a3a5c 20%, #1e4a6e 50%, #1a3a5c 80%, transparent)", borderRadius: "4px", transform: "rotate(-5deg)" }} />
-                {/* Mountains */}
-                <div className="absolute opacity-35" style={{ width: "30%", height: "40%", top: "15%", left: "60%", background: "radial-gradient(ellipse at bottom, #3a3a3a 0%, transparent 70%)" }} />
-              </div>
-
-              {/* Location markers */}
-              {[
-                { top: "38%", left: "28%", label: "Spawn", color: "#10b981", size: "w-3 h-3" },
-                { top: "22%", left: "52%", label: "Ciudad Norte", color: "#FFE600", size: "w-2.5 h-2.5" },
-                { top: "60%", left: "70%", label: "Puerto Sur", color: "#60a5fa", size: "w-2.5 h-2.5" },
-                { top: "45%", left: "15%", label: "Bosque", color: "#4ade80", size: "w-2 h-2" },
-              ].map((marker, i) => (
-                <motion.div
-                  key={i}
-                  initial={{ opacity: 0, scale: 0 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.4 + i * 0.15, type: "spring", stiffness: 200 }}
-                  className="absolute flex flex-col items-center gap-1"
-                  style={{ top: marker.top, left: marker.left }}
-                >
-                  <div className={`${marker.size} rounded-full ring-2 ring-white/40 shadow-lg`} style={{ background: marker.color, boxShadow: `0 0 10px ${marker.color}80` }} />
-                  <span className="text-[10px] md:text-xs font-semibold text-white/90 bg-black/60 px-1.5 py-0.5 rounded whitespace-nowrap" style={{ fontFamily: "inherit" }}>
-                    {marker.label}
-                  </span>
-                </motion.div>
-              ))}
-
-              {/* Compass rose */}
-              <div className="absolute top-4 right-4 w-14 h-14 md:w-16 md:h-16 flex items-center justify-center opacity-70">
-                <svg viewBox="0 0 64 64" className="w-full h-full" fill="none">
-                  <circle cx="32" cy="32" r="30" stroke="rgba(255,255,255,0.2)" strokeWidth="1.5" />
-                  <circle cx="32" cy="32" r="4" fill="white" opacity="0.8" />
-                  <polygon points="32,4 28,28 36,28" fill="white" opacity="0.9" />
-                  <polygon points="32,60 28,36 36,36" fill="rgba(255,255,255,0.4)" />
-                  <polygon points="4,32 28,28 28,36" fill="rgba(255,255,255,0.4)" />
-                  <polygon points="60,32 36,28 36,36" fill="rgba(255,255,255,0.4)" />
-                  <text x="32" y="14" textAnchor="middle" fill="white" fontSize="8" fontWeight="bold" opacity="0.9">N</text>
-                </svg>
-              </div>
-
-              {/* Corner glow */}
-              <div className="absolute inset-0 bg-gradient-to-t from-background/60 via-transparent to-transparent pointer-events-none" />
-              <div className="absolute inset-0 rounded-2xl ring-1 ring-inset ring-white/5 pointer-events-none" />
-
-              {/* Coming soon overlay note */}
-              <div className="absolute bottom-4 left-1/2 -translate-x-1/2">
-                <span className="text-xs text-white/40 bg-black/40 px-3 py-1 rounded-full backdrop-blur-sm border border-white/10">
-                  Mapa interactivo — próximamente
-                </span>
-              </div>
             </div>
           </motion.div>
         </div>
