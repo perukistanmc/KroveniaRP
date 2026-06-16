@@ -75,6 +75,11 @@ export default function App() {
             </a>
           </li>
           <li>
+            <a href="#mapa" onClick={(e) => smoothScroll(e, "mapa")} className="text-foreground/80 hover:text-white transition-colors duration-200 uppercase tracking-widest">
+              Mapa
+            </a>
+          </li>
+          <li>
             <a href="#donaciones" onClick={(e) => smoothScroll(e, "donaciones")} className="text-foreground/80 hover:text-white transition-colors duration-200 uppercase tracking-widest">
               Donaciones
             </a>
@@ -297,6 +302,25 @@ export default function App() {
                 </motion.div>
               ))}
             </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Map Section */}
+      <section id="mapa" className="py-32 px-6 relative z-10 bg-background">
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,_var(--tw-gradient-stops))] from-primary/5 via-background to-background opacity-50 pointer-events-none" />
+        <div className="max-w-6xl mx-auto relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-100px" }}
+            transition={{ duration: 0.8 }}
+            className="text-center mb-16"
+          >
+            <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white mb-4">
+              Mapa
+            </h2>
+            <div className="h-1 w-20 bg-primary mx-auto rounded-full shadow-[0_0_10px_rgba(16,185,129,0.5)]" />
           </motion.div>
         </div>
       </section>
