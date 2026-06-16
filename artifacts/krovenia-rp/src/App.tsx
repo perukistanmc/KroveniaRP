@@ -323,59 +323,17 @@ export default function App() {
             <div className="h-1 w-20 bg-primary mx-auto rounded-full shadow-[0_0_10px_rgba(16,185,129,0.5)]" />
           </motion.div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="relative rounded-2xl overflow-hidden border border-white/10 shadow-2xl"
-            style={{ background: "rgba(255,255,255,0.03)", backdropFilter: "blur(12px)" }}
-          >
-            {/* Map preview background */}
-            <div className="relative w-full aspect-[16/9] flex flex-col items-center justify-center gap-8 px-6"
-              style={{ background: "linear-gradient(135deg, #0d1f0d 0%, #0a1a0a 40%, #111f0d 100%)" }}>
-
-              {/* Pixel grid overlay */}
-              <div className="absolute inset-0 opacity-10" style={{
-                backgroundImage: "linear-gradient(rgba(255,255,255,0.15) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.15) 1px, transparent 1px)",
-                backgroundSize: "32px 32px"
-              }} />
-
-              {/* Glow */}
-              <div className="absolute inset-0 pointer-events-none" style={{ background: "radial-gradient(ellipse at center, rgba(16,185,129,0.08) 0%, transparent 70%)" }} />
-
-              {/* Compass icon */}
-              <svg viewBox="0 0 64 64" className="w-16 h-16 opacity-60 relative z-10" fill="none">
-                <circle cx="32" cy="32" r="30" stroke="rgba(255,255,255,0.25)" strokeWidth="1.5" />
-                <circle cx="32" cy="32" r="4" fill="white" opacity="0.8" />
-                <polygon points="32,4 28,28 36,28" fill="white" opacity="0.9" />
-                <polygon points="32,60 28,36 36,36" fill="rgba(255,255,255,0.35)" />
-                <polygon points="4,32 28,28 28,36" fill="rgba(255,255,255,0.35)" />
-                <polygon points="60,32 36,28 36,36" fill="rgba(255,255,255,0.35)" />
-                <text x="32" y="14" textAnchor="middle" fill="white" fontSize="8" fontWeight="bold" opacity="0.9">N</text>
-              </svg>
-
-              <div className="relative z-10 text-center">
-                <p className="text-white/60 text-sm mb-6 max-w-md">
-                  El mapa interactivo se abre en una nueva pestaña para evitar restricciones del navegador.
-                </p>
-                <a
-                  href="http://kroveniarp.ggwp.cc:17277/?worldname=world&mapname=flat&zoom=1&x=2748&y=64&z=2176"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-3 px-8 py-4 rounded-xl font-semibold text-black transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(16,185,129,0.5)] active:scale-95"
-                  style={{ background: "linear-gradient(135deg, #10b981, #059669)" }}
-                >
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" />
-                  </svg>
-                  Abrir Mapa Interactivo
-                </a>
-              </div>
-
-              <div className="absolute inset-0 bg-gradient-to-t from-background/40 via-transparent to-transparent pointer-events-none" />
-            </div>
-          </motion.div>
+          <div style={{ width: '100%', maxWidth: '1200px', margin: '0 auto', padding: '20px' }}>
+            <iframe
+              src="http://kroveniarp.ggwp.cc:17277/?worldname=world&mapname=flat&zoom=1&x=2748&y=64&z=2176"
+              title="Mapa Interactivo Krovenia RP"
+              width="100%"
+              height="650px"
+              style={{ border: 'none', borderRadius: '12px', boxShadow: '0 8px 24px rgba(0,0,0,0.3)' }}
+              allowFullScreen
+              loading="lazy"
+            />
+          </div>
         </div>
       </section>
 
