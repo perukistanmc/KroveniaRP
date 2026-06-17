@@ -325,7 +325,7 @@ export default function App() {
 
           <div style={{ width: '100%', maxWidth: '1200px', margin: '0 auto', padding: '20px' }}>
             <iframe
-              src="http://kroveniarp.ggwp.cc:17277/?worldname=world&mapname=flat&zoom=1&x=2748&y=64&z=2176"
+              src="http://kroveniarp.ggwp.cc:8123/?worldname=world&mapname=flat&zoom=1&x=2748&y=64&z=2176"
               title="Mapa Interactivo Krovenia RP"
               width="100%"
               height="650px"
